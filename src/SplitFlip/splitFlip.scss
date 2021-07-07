@@ -1,0 +1,100 @@
+$cardHeight: 50px;
+$fontSize: 80px;
+$animationDuration: 120ms;
+$flippingBG: rgb(20, 24, 27);
+
+* {
+  box-sizing: border-box;
+}
+
+.split-flip {
+  font-family: monospace;
+  background-color: black;
+  color: white;
+  width: 75px;
+  height: 115px;
+  position: relative;
+  padding: 5px;
+
+  .top, .bottom {
+    height: $cardHeight;
+    font-size: $fontSize;
+    text-align: center;
+    overflow: hidden;
+  }
+  .top {
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: rgb(58, 67, 77);
+    margin-bottom: 2px;
+
+    .old {
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background-color: $flippingBG;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      padding-top: 5px;
+      transform-origin: bottom;
+      transform: rotateX(90deg);
+    }
+    .new {
+      position: relative;
+      z-index: 0;
+      height: 100%;
+      padding-top: 4px;
+    }
+  }
+
+  .bottom {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(58, 67, 77);
+    position: relative;
+
+    .new {
+      // border: 1px solid red;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding-bottom: 4px;
+    }
+  }
+
+  hr {
+    height: 2%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bottom {
+    height: 49%;
+  }
+}
+
+.flipDown {
+  animation: flipDown $animationDuration;
+  // animation-iteration-count: 1;
+}
+
+// Animations
+@keyframes flipDown {
+  from {
+    transform: rotateX(0deg)
+  }
+  // 50% {
+  //   transform: rotateX(90deg)
+  // }
+  to {
+    transform: rotateX(90deg)
+  }
+  // 100% {
+  //   transform: rotateX(0deg)
+  // }
+}
