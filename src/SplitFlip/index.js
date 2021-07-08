@@ -1,7 +1,9 @@
 import React from 'react'
 import './splitFlip.scss'
 
-const characters = 'QWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()1234567890'.split('')
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.?\'"-=!@#$%^&*()_+'.split(
+  ''
+)
 const animationDuration = 50
 
 export default function SplitFlip() {
@@ -11,15 +13,13 @@ export default function SplitFlip() {
     return new Promise((resolve) => setTimeout(resolve, milliseconds))
   }
 
-  // const randomFlip = async (e) => {
-  //   for (let i = 0; i < 25; i++) {
-  //     await flipDown(e)
-  //   }
-  // }
+  const sequentialFlip = async () => {
+    let char = 'T',
+      index = 0
 
-  const sequentialFlip = async (e) => {
-    for (let i = 0; i < characters.length; i++) {
-      await flipDown(e, characters[i])
+    while (index !== characters.indexOf(char) + 1) {
+      await flipDown(characters[index])
+      index++
     }
   }
 
