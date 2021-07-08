@@ -1,7 +1,7 @@
 $cardHeight: 50px;
 $fontSize: 80px;
-$animationDuration: 120ms;
-$flippingBG: rgb(20, 24, 27);
+$animationDuration: 50ms;
+$flippingBG: rgb(7, 9, 10);
 
 * {
   box-sizing: border-box;
@@ -15,15 +15,17 @@ $flippingBG: rgb(20, 24, 27);
   height: 115px;
   position: relative;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
 
   .top, .bottom {
     height: $cardHeight;
     font-size: $fontSize;
     text-align: center;
     overflow: hidden;
+    position: relative;
   }
   .top {
-    position: relative;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: rgb(58, 67, 77);
@@ -34,14 +36,13 @@ $flippingBG: rgb(20, 24, 27);
       height: 100%;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      background-color: $flippingBG;
+      background-color: rgb(58, 67, 77);
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
       padding-top: 5px;
       transform-origin: bottom;
-      transform: rotateX(90deg);
     }
     .new {
       position: relative;
@@ -55,15 +56,26 @@ $flippingBG: rgb(20, 24, 27);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: rgb(58, 67, 77);
-    position: relative;
 
+    .old {
+      line-height: 0px;
+      position: relative;
+      z-index: 0;
+    }
     .new {
-      // border: 1px solid red;
-      position: absolute;
-      bottom: 0;
-      left: 0;
       width: 100%;
-      padding-bottom: 4px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: rgb(58, 67, 77);
+      z-index: 1;
+      line-height: 0;
+      
+      transform-origin: top;
+      transform: rotateX(90deg);
     }
   }
 
@@ -72,29 +84,35 @@ $flippingBG: rgb(20, 24, 27);
     margin: 0;
     padding: 0;
   }
-
-  .bottom {
-    height: 49%;
-  }
 }
 
 .flipDown {
   animation: flipDown $animationDuration;
-  // animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.flipDownBottom {
+  animation: flipDownBottom $animationDuration;
+  animation-timing-function: linear;
 }
 
 // Animations
 @keyframes flipDown {
   from {
-    transform: rotateX(0deg)
+    transform: rotateX(0deg);
   }
-  // 50% {
-  //   transform: rotateX(90deg)
-  // }
   to {
-    transform: rotateX(90deg)
+    transform: rotateX(90deg);
+    background-color: $flippingBG;
   }
-  // 100% {
-  //   transform: rotateX(0deg)
-  // }
+}
+
+@keyframes flipDownBottom {
+  from {
+    transform: rotateX(-90deg);
+    background-color: $flippingBG;
+  }
+  to {
+    transform: rotateX(0deg);
+  }
 }
