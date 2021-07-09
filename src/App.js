@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import './styles.scss'
 import SplitFlip from './SplitFlip'
+import SplitFlipBoard from './SplitFlipBoard'
 
 export default function App() {
   const [play, setPlay] = useState(false)
@@ -13,12 +14,10 @@ export default function App() {
         alignItems: 'center',
         fontFamily: 'sans-serif'
       }}>
-      <h1>Split Flip</h1>
-
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <SplitFlip character="W" play={play} />
-        <SplitFlip character="T" play={play} />
-        <SplitFlip character="F" play={play} />
+      <h1>Split-Flip Board</h1>
+      <div>
+        <SplitFlipBoard message="HELLO," play={play} />
+        <SplitFlipBoard message="WORLD!" play={play} />
       </div>
       <button onClick={() => setPlay(!play)}>Start</button>
     </div>
