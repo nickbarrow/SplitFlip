@@ -75,6 +75,8 @@ export default function SplitFlip(props) {
           <div className="old"></div>
           <div className="new"></div>
         </div>
+        <div className="guide left"></div>
+        <div className="guide right"></div>
         <div className="bottom">
           <div className="old"></div>
           <div className="new"></div>

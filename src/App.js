@@ -15,7 +15,7 @@ export default function App() {
         fontFamily: 'sans-serif'
       }}>
       <h1>Split-Flip Board</h1>
-      <div>
+      <div style={{ transform: 'scale(1)' }}>
         <SplitFlipBoard message="HELLO," play={play} />
         <SplitFlipBoard message="WORLD!" play={play} />
       </div>

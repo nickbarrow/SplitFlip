@@ -17,6 +17,20 @@ $flippingBG: rgb(7, 9, 10);
   display: flex;
   flex-direction: column;
 
+  .guide {
+    position: absolute;
+    width: 4px;
+    height: 16%;
+    background-color: rgb(49, 49, 49);
+    border: 1px solid black;
+    border-radius: 3px;
+    z-index: 3;
+    top: 42%;
+
+    &.left { left: 5px; }
+    &.right { right: 5px; }
+  }
+
   .top, .bottom {
     height: $cardHeight;
     font-size: $fontSize;
@@ -33,8 +47,8 @@ $flippingBG: rgb(7, 9, 10);
     .old {
       width: 100%;
       height: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       background-color: rgb(58, 67, 77);
       position: absolute;
       top: 0;
@@ -42,6 +56,7 @@ $flippingBG: rgb(7, 9, 10);
       z-index: 1;
       padding-top: 5px;
       transform-origin: bottom;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     .new {
       position: relative;
