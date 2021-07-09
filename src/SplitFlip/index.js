@@ -1,23 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './splitFlip.scss'
 
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.?\'"-=!@#$%^&*()_+'.split(
-  ''
-)
-const animationDuration = 50
+export default function SplitFlip(props) {
+  const character = props.character || ' '
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.?\'"-=!@#$%^&*()_+ '.split(
+    ''
+  )
+  const animationDuration = 50
 
-export default function SplitFlip() {
-  // const [letter, setLetter] = useState('Q')
+  // Assign each character a unique id.
+  const getRandomID = () => {
+    let s = 'char-'
+    for (var i = 0; i < 4; i++) s += Math.floor(Math.random() * 10)
+    return s
+  }
+  // Get ID for this character.
+  const charID = props.charID || getRandomID()
 
+  // Mimic sleep function so we can wait for animation to finish.
   const sleep = (milliseconds) => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds))
   }
 
+  // Flip sequentially until we hit desired character.
   const sequentialFlip = async () => {
-    let char = 'T',
-      index = 0
+    let index = 0
 
-    while (index !== characters.indexOf(char) + 1) {
+    while (index !== characters.indexOf(character) + 1) {
       await flipDown(characters[index])
       index++
     }
@@ -27,10 +36,10 @@ export default function SplitFlip() {
     char = characters[Math.floor(Math.random() * characters.length)]
   ) => {
     let letter = char,
-      topNew = document.querySelector('.top > .new'),
-      topOld = document.querySelector('.top > .old'),
-      bottomNew = document.querySelector('.bottom > .new'),
-      bottomOld = document.querySelector('.bottom > .old')
+      topNew = document.querySelector(`#${charID} > .top > .new`),
+      topOld = document.querySelector(`#${charID} > .top > .old`),
+      bottomNew = document.querySelector(`#${charID} > .bottom > .new`),
+      bottomOld = document.querySelector(`#${charID} > .bottom > .old`)
 
     // First set hidden letters
     topNew.innerHTML = letter
@@ -51,9 +60,13 @@ export default function SplitFlip() {
     bottomOld.innerHTML = letter
   }
 
+  useEffect(() => {
+    if (props.play) sequentialFlip()
+  }, [props.play, sequentialFlip])
+
   return (
     <>
-      <div className="split-flip">
+      <div id={charID} className="split-flip">
         <div className="top">
           <div className="old"></div>
           <div className="new"></div>
@@ -63,13 +76,13 @@ export default function SplitFlip() {
           <div className="new"></div>
         </div>
       </div>
-      <button
+      {/* <button
         style={{ marginTop: '10px' }}
         onClick={() => {
           sequentialFlip()
         }}>
         Start
-      </button>
+      </button> */}
     </>
   )
 }
