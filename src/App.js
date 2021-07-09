@@ -16,8 +16,9 @@ export default function App() {
       <h1>Split Flip</h1>
 
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <SplitFlip character="H" play={play} />
-        <SplitFlip character="I" play={play} />
+        <SplitFlip character="W" play={play} />
+        <SplitFlip character="T" play={play} />
+        <SplitFlip character="F" play={play} />
       </div>
       <button onClick={() => setPlay(!play)}>Start</button>
     </div>

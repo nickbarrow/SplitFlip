@@ -32,6 +32,7 @@ export default function SplitFlip(props) {
     }
   }
 
+  var flipAudio = new Audio('click.wav')
   const flipDown = async (
     char = characters[Math.floor(Math.random() * characters.length)]
   ) => {
@@ -40,6 +41,10 @@ export default function SplitFlip(props) {
       topOld = document.querySelector(`#${charID} > .top > .old`),
       bottomNew = document.querySelector(`#${charID} > .bottom > .new`),
       bottomOld = document.querySelector(`#${charID} > .bottom > .old`)
+
+    // Reset bottom flip position before we change letter to avoid flickering.
+    bottomNew.classList.remove('flipDownBottom')
+    void bottomNew.offsetWidth
 
     // First set hidden letters
     topNew.innerHTML = letter
@@ -52,17 +57,16 @@ export default function SplitFlip(props) {
 
     topOld.innerHTML = letter
 
-    bottomNew.classList.remove('flipDownBottom')
-    void bottomNew.offsetWidth
     bottomNew.classList.add('flipDownBottom')
     await sleep(animationDuration)
 
     bottomOld.innerHTML = letter
+    flipAudio.play()
   }
 
   useEffect(() => {
     if (props.play) sequentialFlip()
-  }, [props.play, sequentialFlip])
+  }, [props.play])
 
   return (
     <>

@@ -12,7 +12,6 @@ $flippingBG: rgb(7, 9, 10);
   background-color: black;
   color: white;
   width: 75px;
-  height: 115px;
   position: relative;
   padding: 5px;
   display: flex;
@@ -58,9 +57,11 @@ $flippingBG: rgb(7, 9, 10);
     background-color: rgb(58, 67, 77);
 
     .old {
-      line-height: 0px;
+      width: 100%;
+      height: 100%;
       position: relative;
       z-index: 0;
+      line-height: 0px;
     }
     .new {
       width: 100%;
@@ -75,7 +76,7 @@ $flippingBG: rgb(7, 9, 10);
       line-height: 0;
       
       transform-origin: top;
-      transform: rotateX(90deg);
+      transform: rotateX(-90deg);
     }
   }
 
