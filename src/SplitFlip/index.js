@@ -61,7 +61,7 @@ export default function SplitFlip(props) {
     await sleep(animationDuration)
 
     bottomOld.innerHTML = letter
-    flipAudio.play()
+    // flipAudio.play()
   }
 
   useEffect(() => {

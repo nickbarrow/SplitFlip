@@ -1,5 +1,6 @@
 import React from 'react'
 import SplitFlip from '../SplitFlip'
+import './SplitFlipBoard.scss'
 
 export default function SplitFlipBoard(props) {
   return (

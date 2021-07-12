@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-// import './styles.scss'
-import SplitFlip from './SplitFlip'
 import SplitFlipBoard from './SplitFlipBoard'
 
 export default function App() {
@@ -15,9 +13,11 @@ export default function App() {
         fontFamily: 'sans-serif'
       }}>
       <h1>Split-Flip Board</h1>
-      <div style={{ transform: 'scale(1)' }}>
-        <SplitFlipBoard message="HELLO," play={play} />
-        <SplitFlipBoard message="WORLD!" play={play} />
+      <div className="split-flip-board" style={{ transform: 'scale(1)' }}>
+        <SplitFlipBoard message="          " play={play} />
+        <SplitFlipBoard message="  HELLO,  " play={play} />
+        <SplitFlipBoard message="  WORLD!  " play={play} />
+        <SplitFlipBoard message="          " play={play} />
       </div>
       <button onClick={() => setPlay(!play)}>Start</button>
     </div>
