@@ -4,7 +4,7 @@ import './SplitFlipBoard.scss'
 
 export default function SplitFlipBoard(props) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div className="split-flip-row">
       {props.message.split('').map((character) => {
         return <SplitFlip character={character} play={props.play} />
       })}

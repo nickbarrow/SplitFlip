@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SplitFlipBoard from './SplitFlipBoard'
+import SplitFlip from './SplitFlip'
 
 export default function App() {
   const [play, setPlay] = useState(false)

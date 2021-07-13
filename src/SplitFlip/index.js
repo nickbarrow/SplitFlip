@@ -3,7 +3,7 @@ import './splitFlip.scss'
 
 export default function SplitFlip(props) {
   const character = props.character || ' '
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.?\'"-=!@#$%^&*()_+ '.split(
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.?!\'"-=@#$%^&*()_+ '.split(
     ''
   )
   const animationDuration = 50
@@ -24,6 +24,8 @@ export default function SplitFlip(props) {
 
   // Flip sequentially until we hit desired character.
   const sequentialFlip = async () => {
+    if (character === ' ') return
+
     let index = 0
 
     while (index !== characters.indexOf(character) + 1) {
