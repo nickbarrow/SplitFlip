@@ -1,0 +1,34 @@
+// I don't care that comments in JSON "ArEn'T rEaL".
+// My TypeScript knowledge is even less real so call the cops 🚓🚓
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    // Allows for debug mapping back to TS files in browser.
+    "sourceMap": true,
+    // Allow JS files to be imported in the project.
+    "allowJs": true,
+    // Allows use of .tsx files. "react" mode means no further
+    // transformations (Babel, etc.) before use.
+    "jsx": "react",
+    // Node.js module resolution strategy.
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    // If true forces functions to have return statement.
+    "noImplicitReturns": true,
+    // Allows importing a "synthetic default import" when 
+    // no module default export is explicitly is specified.
+    "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true
+  }
+}
